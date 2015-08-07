@@ -1,0 +1,17 @@
+[user]
+	name = Tevin Zhang
+	email = mail2tevin@gmail.com
+[credential]
+	helper = osxkeychain
+[core]
+	excludesfile = /Users/tevin/.gitignore_global
+[alias]
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lga = log --oneline --abbrev-commit --all --graph --decorate --color
+    # codecli
+    start = !code start
+    pr = !code pr
+    sync = !code sync
+    end = !code end
+[push]
+	default = simple

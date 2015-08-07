@@ -1,0 +1,22 @@
+/*
+!.gitignore
+!.gitconfig
+
+# git global
+!.gitignore_global
+
+# shell
+!.zshrc
+!.zshenv
+!.zlogin
+
+# misc tools
+!.bin
+
+# tmux
+!.tmux.conf
+!.ssh/
+
+# vim
+!.vim/
+!.vimrc
