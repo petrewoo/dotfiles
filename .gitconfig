@@ -1,6 +1,35 @@
 [user]
 	name = Tevin Zhang
 	email = mail2tevin@gmail.com
+    user = tevino
+[color]
+    status = auto
+    diff = auto
+    branch = auto
+    interactive = auto
+[commit]
+    color = auto
+[status]
+    color = auto
+[push]
+    color = auto
+	default = simple
+[pull]
+    color = auto
+[fetch]
+    color = auto
+[branch]
+    color = auto
+[clone]
+    color = auto
+[merge]
+    color = auto
+[rm]
+    color = auto
+[add]
+    color = auto
+[log]
+    color = auto
 [credential]
 	helper = osxkeychain
 [core]
@@ -15,3 +44,8 @@
     end = !code end
 [push]
 	default = simple
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
