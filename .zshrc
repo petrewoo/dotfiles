@@ -13,18 +13,6 @@ alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
 alias upgrade_prezto="pushd ${ZDOTDIR:-$HOME}/.zprezto && gco master && g sync && g rebase upstream/master && g submodule update --init --recursive && popd"
 
-# tmux
-if which tmux >/dev/null 2>&1; then
-    if [[ -z "$TMUX" ]] ;then
-        ID="`tmux ls | grep -vm1 attached | cut -d: -f1`" # get the id of a deattached session
-        if [[ -z "$ID" ]] ;then # if not available create a new one
-            tmux new-session
-        else
-            tmux attach-session -t "$ID" # if available attach to it
-        fi
-    fi
-fi
-
 # Z
 . `brew --prefix`/etc/profile.d/z.sh
 
