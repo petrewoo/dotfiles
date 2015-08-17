@@ -9,6 +9,7 @@
 !.zshrc
 !.zshenv
 !.zlogin
+!.zpreztorc
 
 # misc tools
 !.bin
