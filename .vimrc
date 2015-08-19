@@ -182,6 +182,8 @@ set list                                         " Show trailing whitespace
 set listchars=tab:\|·,trail:·
 
 
+" search for visually selected text with //
+vnoremap // y/<C-R>"<CR>"
 
 autocmd! BufWritePost ~/.vimrc source ~/.vimrc  " When vimrc is edited, reload it
 
@@ -209,7 +211,6 @@ set background=dark
 let base16colorspace=256
 colorscheme base16-ocean
 
-
 let g:ctrlp_use_caching = 0
 " let g:ctrlp_working_path_mode = 'c'
 if executable('ag')
@@ -222,6 +223,7 @@ else
     \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
     \ }
 endif
+
 " ignore in ctrlp
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
@@ -263,6 +265,7 @@ let g:AutoClosePairs = "() {} \""
 
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>r :Ag!
+nnoremap <leader>3 :AgFromSearch<CR>
 
 "Do not fix these errors/warnings (default: E226,E24,W6)
 " let g:autopep8_ignore="E501,W293"
