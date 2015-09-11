@@ -49,6 +49,7 @@ NeoBundle 'tell-k/vim-autopep8'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-rsi'
+NeoBundle 'mtth/scratch.vim'
 
 
 " Theme
