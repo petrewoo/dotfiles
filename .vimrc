@@ -265,6 +265,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:AutoClosePairs = "() {} \""
 
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_autoclose_preview_window_after_insertion='1'
 nnoremap <leader>r :Ag!
 nnoremap <leader>3 :AgFromSearch<CR>
 
