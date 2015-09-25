@@ -49,6 +49,7 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-rsi'
 NeoBundle 'mtth/scratch.vim'
+NeoBundle 'majutsushi/tagbar'
 
 
 " Theme
@@ -268,6 +269,9 @@ nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_autoclose_preview_window_after_insertion='1'
 nnoremap <leader>r :Ag!
 nnoremap <leader>3 :AgFromSearch<CR>
+
+" Tagbar
+nnoremap <leader>b :Tagbar<CR>
 
 "Do not fix these errors/warnings (default: E226,E24,W6)
 " let g:autopep8_ignore="E501,W293"
