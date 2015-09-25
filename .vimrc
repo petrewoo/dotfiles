@@ -30,7 +30,7 @@ NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'bling/vim-airline'
+NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'scrooloose/nerdtree'
@@ -201,10 +201,10 @@ vmap <C-c> "+y
 " git gutter
 set updatetime=750         " faster gutter update
 
-" Airline
-set laststatus=2           " always show airline
-let g:airline_left_sep=''  " no fancy sep
-let g:airline_right_sep='' " no fancy sep
+
+" lightline
+set laststatus=2                   " always show lightline
+let g:lightline = {'colorscheme': 'jellybeans'}
 
 " Theme
 set background=dark
