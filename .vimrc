@@ -60,6 +60,8 @@ NeoBundle 'othree/html5.vim'
 NeoBundle 'saltstack/salt-vim'
 NeoBundle 'sprsquish/thrift.vim'
 NeoBundle 'Glench/Vim-Jinja2-Syntax'
+NeoBundle 'nsf/gocode', {'rtp': 'vim/'}
+NeoBundle 'fatih/vim-go'
 
 " You can specify revision/branch/tag.
 NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
@@ -265,7 +267,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 let g:AutoClosePairs = "() {} \""
 
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_goto_buffer_command = 'vertical-split'
 let g:ycm_autoclose_preview_window_after_insertion='1'
 nnoremap <leader>r :Ag!
 nnoremap <leader>3 :AgFromSearch<CR>
@@ -291,9 +293,26 @@ let g:syntastic_check_on_wq = 1
 """" File
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "autocmd FileType python set foldmethod=indent|set foldlevel=99
-autocmd FileType python set cc=80
+" Python
+au FileType python set cc=80
+
+" c
+au FileType c,python nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Indent Fixes
-    autocmd FileType css,less,html,jinja,javascript,php,puppet,yaml set shiftwidth=2
-    autocmd FileType css,less,html,jinja,javascript,php,puppet,yaml set tabstop=2
-    autocmd FileType css,less,html,jinja,javascript,php,puppet,yaml set softtabstop=2
+au FileType css,less,html,jinja,javascript,php,puppet,yaml set shiftwidth=2
+au FileType css,less,html,jinja,javascript,php,puppet,yaml set tabstop=2
+au FileType css,less,html,jinja,javascript,php,puppet,yaml set softtabstop=2
+
+" Golang
+au FileType go set nolist
+
+au FileType go nmap <leader>gr <Plug>(go-run)
+au FileType go nmap <leader>gb <Plug>(go-build)
+" au FileType go nmap <leader>t <Plug>(go-test)
+" au FileType go nmap <leader>c <Plug>(go-coverage)
+
+au FileType go nmap <Leader>d <Plug>(go-def)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)

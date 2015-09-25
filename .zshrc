@@ -19,6 +19,8 @@ alias upgrade_prezto="pushd ${ZDOTDIR:-$HOME}/.zprezto && gco master && g sync &
 # Golang
 export GOPATH="$HOME/.gopath"
 mkdir -p "$GOPATH"
+export PATH=$PATH:$GOPATH/bin
+
 
 # thefuck
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
