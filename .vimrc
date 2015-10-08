@@ -38,6 +38,7 @@ NeoBundle 'SirVer/ultisnips'   " Snippet engine
 NeoBundle 'honza/vim-snippets' " Snippets
 NeoBundle 'tpope/vim-fugitive' " Git itegration
 NeoBundle 'Valloric/YouCompleteMe',  {
+      \ 'augroup': 'youcompletemeStart',
       \ 'build' : {
       \     'mac' : './install.sh',
       \    },
@@ -101,7 +102,6 @@ NeoBundleCheck
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-
   " Enable file type detection.
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
   " 'cindent' is on in C files, etc.
@@ -110,27 +110,23 @@ if has("autocmd")
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
-  au!
+      au!
+      " For all text files set 'textwidth' to 78 characters.
+      autocmd FileType text setlocal textwidth=80
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=80
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  " Also don't do it when the mark is in the first line, that is the default
-  " position when opening a file.
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-
+      " When editing a file, always jump to the last known cursor position.
+      " Don't do it when the position is invalid or when inside an event handler
+      " (happens when dropping a file on gvim).
+      " Also don't do it when the mark is in the first line, that is the default
+      " position when opening a file.
+      autocmd BufReadPost *
+        \ if line("'\"") > 1 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
   augroup END
 
 else
-
   set autoindent        " always set autoindenting on
-
 endif " has("autocmd")
 
 set guifont=Source\ Code\ Pro:h16
@@ -293,26 +289,32 @@ let g:syntastic_check_on_wq = 1
 """" File
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "autocmd FileType python set foldmethod=indent|set foldlevel=99
-" Python
-au FileType python set cc=80
+augroup Python
+    au!
+    au FileType python set cc=80
 
-" c
-au FileType c,python nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+    " c
+    au FileType c,python nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+augroup END
 
-" Indent Fixes
-au FileType css,less,html,jinja,javascript,php,puppet,yaml set shiftwidth=2
-au FileType css,less,html,jinja,javascript,php,puppet,yaml set tabstop=2
-au FileType css,less,html,jinja,javascript,php,puppet,yaml set softtabstop=2
+augroup IndentFixes
+    au!
+    au FileType css,less,html,jinja,javascript,php,puppet,yaml set shiftwidth=2
+    au FileType css,less,html,jinja,javascript,php,puppet,yaml set tabstop=2
+    au FileType css,less,html,jinja,javascript,php,puppet,yaml set softtabstop=2
+augroup END
 
-" Golang
-au FileType go set nolist
+augroup Golang
+    au!
+    au FileType go set nolist
 
-au FileType go nmap <leader>gr <Plug>(go-run)
-au FileType go nmap <leader>gb <Plug>(go-build)
-" au FileType go nmap <leader>t <Plug>(go-test)
-" au FileType go nmap <leader>c <Plug>(go-coverage)
+    au FileType go nmap <leader>gr <Plug>(go-run)
+    au FileType go nmap <leader>gb <Plug>(go-build)
+    " au FileType go nmap <leader>t <Plug>(go-test)
+    " au FileType go nmap <leader>c <Plug>(go-coverage)
 
-au FileType go nmap <Leader>d <Plug>(go-def)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+    au FileType go nmap <Leader>d <Plug>(go-def)
+    au FileType go nmap <Leader>ds <Plug>(go-def-split)
+    au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+    au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+augroup END
