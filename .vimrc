@@ -19,39 +19,28 @@ call neobundle#begin(expand('~/.vim/bundle'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Add or remove your Bundles here:
-" NeoBundle 'Shougo/neosnippet.vim'
-" NeoBundle 'Shougo/neosnippet-snippets'
-
 NeoBundle 'ctrlpvim/ctrlp.vim'
-" NeoBundle 'flazz/vim-colorschemes'
-
-
+NeoBundle 'rking/ag.vim'
 NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'Raimondi/delimitMate'  " auto closing quptes etc
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'godlygeek/tabular'
+NeoBundle 'tpope/vim-commentary'  " comment
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'SirVer/ultisnips'   " Snippet engine
-NeoBundle 'honza/vim-snippets' " Snippets
-NeoBundle 'tpope/vim-fugitive' " Git itegration
+NeoBundle 'SirVer/ultisnips'   " snippet engine
+NeoBundle 'honza/vim-snippets' " snippets
+NeoBundle 'tpope/vim-fugitive' " git itegration
 NeoBundle 'Valloric/YouCompleteMe',  {
-      \ 'augroup': 'youcompletemeStart',
       \ 'build' : {
       \     'mac' : './install.sh',
       \    },
       \ }
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tell-k/vim-autopep8'
-" NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'rking/ag.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'tpope/vim-rsi'
-NeoBundle 'mtth/scratch.vim'
+NeoBundle 'tpope/vim-rsi'  " readline key bindings
+NeoBundle 'mtth/scratch.vim'  " stratch window
 NeoBundle 'majutsushi/tagbar'
-
 
 " Theme
 NeoBundle 'chriskempson/base16-vim'
@@ -63,9 +52,6 @@ NeoBundle 'sprsquish/thrift.vim'
 NeoBundle 'Glench/Vim-Jinja2-Syntax'
 NeoBundle 'nsf/gocode', {'rtp': 'vim/'}
 NeoBundle 'fatih/vim-go'
-
-" You can specify revision/branch/tag.
-NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
 
 " Required:
 call neobundle#end()
@@ -198,11 +184,12 @@ vmap <C-c> "+y
 vmap <C-c> "+y
 
 " git gutter
-set updatetime=750         " faster gutter update
+" set updatetime=150         " faster gutter update
 
 
 " lightline
 set laststatus=2                   " always show lightline
+" set ttimeoutlen=50
 let g:lightline = {'colorscheme': 'jellybeans'}
 
 " Theme
@@ -210,8 +197,16 @@ set background=dark
 let base16colorspace=256
 colorscheme base16-ocean
 
+" ctrlp
 let g:ctrlp_use_caching = 0
-" let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll|pyc)$',
+  \ }
+
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
 
@@ -222,13 +217,6 @@ else
     \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
     \ }
 endif
-
-" ignore in ctrlp
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll|pyc)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
 
 
 let mapleader = "\<Space>"
@@ -285,6 +273,9 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 
+" vim-go
+let g:go_fmt_command = "goimports"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" File
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -310,11 +301,12 @@ augroup Golang
 
     au FileType go nmap <leader>gr <Plug>(go-run)
     au FileType go nmap <leader>gb <Plug>(go-build)
+    au FileType go nmap <leader>gd <Plug>(go-doc)
     " au FileType go nmap <leader>t <Plug>(go-test)
     " au FileType go nmap <leader>c <Plug>(go-coverage)
 
     au FileType go nmap <Leader>d <Plug>(go-def)
-    au FileType go nmap <Leader>ds <Plug>(go-def-split)
-    au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-    au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+    " au FileType go nmap <Leader>ds <Plug>(go-def-split)
+    " au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+    " au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 augroup END
