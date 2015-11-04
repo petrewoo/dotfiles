@@ -32,7 +32,7 @@ NeoBundle 'honza/vim-snippets' " snippets
 NeoBundle 'tpope/vim-fugitive' " git itegration
 NeoBundle 'Valloric/YouCompleteMe',  {
       \ 'build' : {
-      \     'mac' : './install.sh',
+      \     'mac' : './install.py --clang-completer --gocode-completer',
       \    },
       \ }
 NeoBundle 'scrooloose/syntastic'
@@ -253,6 +253,7 @@ let g:AutoClosePairs = "() {} \""
 
 let g:ycm_goto_buffer_command = 'vertical-split'
 let g:ycm_autoclose_preview_window_after_insertion='1'
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 nnoremap <leader>r :Ag!
 nnoremap <leader>3 :AgFromSearch<CR>
 
