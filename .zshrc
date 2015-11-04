@@ -30,7 +30,7 @@ export PATH=$PATH:$GOPATH/bin
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 
 # Java
-export JAVA_HOME="$(/usr/libexec/java_home)"
+export JAVA_HOME="$(/usr/libexec/java_home 2>/dev/null)"
 
 # virtualenv
 export WORKON_HOME="$HOME/.virtualenvs"
