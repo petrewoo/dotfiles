@@ -35,7 +35,7 @@ export JAVA_HOME="$(/usr/libexec/java_home 2>/dev/null)"
 # virtualenv
 export WORKON_HOME="$HOME/.virtualenvs"
 mkdir -p "$WORKON_HOME"
-source virtualenvwrapper.sh
+source virtualenvwrapper_lazy.sh
 
 # git alias
 alias gcm="git checkout master"
