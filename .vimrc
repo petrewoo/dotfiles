@@ -4,9 +4,7 @@
 """" NeoBundle Scripts
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
+  set nocompatible               " Be iMproved
 
   " Required:
   set runtimepath+=~/.vim/bundle/neobundle.vim/
