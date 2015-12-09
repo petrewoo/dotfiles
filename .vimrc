@@ -28,17 +28,22 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'SirVer/ultisnips'   " snippet engine
 NeoBundle 'honza/vim-snippets' " snippets
 NeoBundle 'tpope/vim-fugitive' " git itegration
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Valloric/YouCompleteMe',  {
       \ 'build' : {
       \     'mac' : './install.py --clang-completer --gocode-completer',
       \    },
       \ }
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'tell-k/vim-autopep8'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-rsi'  " readline key bindings
 NeoBundle 'mtth/scratch.vim'  " stratch window
 NeoBundle 'majutsushi/tagbar'
+
+" Python
+NeoBundle 'tell-k/vim-autopep8'
+
+" Golang
+NeoBundle 'fatih/vim-go'
 
 " Theme
 NeoBundle 'chriskempson/base16-vim'
@@ -48,8 +53,6 @@ NeoBundle 'othree/html5.vim'
 NeoBundle 'saltstack/salt-vim'
 NeoBundle 'sprsquish/thrift.vim'
 NeoBundle 'Glench/Vim-Jinja2-Syntax'
-NeoBundle 'nsf/gocode', {'rtp': 'vim/'}
-NeoBundle 'fatih/vim-go'
 
 " Required:
 call neobundle#end()
