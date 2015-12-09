@@ -164,7 +164,6 @@ set autoread                   " Auto reload file on change
 
 
 set list                                         " Show trailing whitespace
-" set listchars=tab:>-,trail:-
 set listchars=tab:\|·,trail:·
 
 
@@ -262,7 +261,7 @@ nnoremap <leader>3 :AgFromSearch<CR>
 nnoremap <leader>b :Tagbar<CR>
 
 "Do not fix these errors/warnings (default: E226,E24,W6)
-" let g:autopep8_ignore="E501,W293"
+let g:autopep8_ignore="E501,W293"
 let g:syntastic_python_flake8_args = "--max-line-length=80"
 
 " Syntastic recommended settings
