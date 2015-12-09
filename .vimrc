@@ -284,9 +284,13 @@ let g:go_fmt_command = "goimports"
 augroup Python
     au!
     au FileType python set cc=80
+    au FileType python nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+augroup END
 
-    " c
-    au FileType c,python nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+augroup C
+    au!
+    au FileType c set listchars=tab:\ \ ,trail:·
+    au FileType c nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 augroup END
 
 augroup IndentFixes
