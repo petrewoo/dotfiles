@@ -3,6 +3,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# EDITOR
+export EDITOR=emacs
+
 # Locate
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
