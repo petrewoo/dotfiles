@@ -148,6 +148,8 @@ set shiftwidth=4
 set shiftwidth=4
 set expandtab  " translate tab to spaces
 
+set relativenumber
+
 "let &termencoding=&encoding
 set fileencodings=utf-8,gb18030,gbk,gb2312,big5
 
