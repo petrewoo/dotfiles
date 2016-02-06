@@ -145,7 +145,6 @@ set undodir=~/.vim/undo
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set shiftwidth=4
 set expandtab  " translate tab to spaces
 
 set relativenumber
@@ -291,6 +290,9 @@ augroup END
 
 augroup C
     au!
+    au FileType c set tabstop=2
+    au FileType c set softtabstop=2
+    au FileType c set shiftwidth=2
     au FileType c set listchars=tab:\ \ ,trail:·
     au FileType c nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 augroup END
