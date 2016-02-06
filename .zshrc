@@ -21,7 +21,9 @@ alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias upgrade_prezto="pushd ${ZDOTDIR:-$HOME}/.zprezto && gco master && g sync && g rebase upstream/master && g submodule update --init --recursive && popd"
 
 # Z
-. `brew --prefix`/etc/profile.d/z.sh
+if which brew &> /dev/null; then
+    . `brew --prefix`/etc/profile.d/z.sh
+fi
 
 # Golang
 export GOPATH="$HOME/.gopath"
