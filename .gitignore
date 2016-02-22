@@ -10,6 +10,7 @@
 !.zshenv
 !.zlogin
 !.zpreztorc
+!.zprezto
 
 # misc tools
 !.bin
