@@ -18,7 +18,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
 alias airport="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport"
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
-alias upgrade_prezto="pushd ${ZDOTDIR:-$HOME}/.zprezto && gco master && g sync && g rebase upstream/master && g submodule update --init --recursive && popd"
+alias upgrade_prezto="pushd ${ZDOTDIR:-$HOME}/.zprezto && gco master && gsc && g submodule update --init --recursive && popd"
 
 # Z
 if which brew &> /dev/null; then
