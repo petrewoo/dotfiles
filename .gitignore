@@ -21,3 +21,6 @@
 # vim
 !.vim/
 !.vimrc
+.vim/autoload
+.vim/ftplugin
+.vim/view
