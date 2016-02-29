@@ -28,7 +28,19 @@ fi
 # Golang
 export GOPATH="$HOME/.gopath"
 mkdir -p "$GOPATH"
+export GO15VENDOREXPERIMENT=1
 export PATH=$PATH:$GOPATH/bin
+# cd into a go pkg by keywords
+function gcd() {
+    local dirs="$(find "$GOPATH/src" -maxdepth 3 -name "*$1*" \( -type d -or -type l \))"
+    local target="$(echo $dirs| fzf -0 -1)"
+    if [ -z "$target" ]; then
+        echo "No match for: $1"
+        return 1
+    else
+        cd "$target"
+    fi
+}
 
 
 # thefuck
