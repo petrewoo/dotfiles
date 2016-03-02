@@ -282,20 +282,50 @@ let g:go_fmt_command = "goimports"
 """" File
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "autocmd FileType python set foldmethod=indent|set foldlevel=99
-augroup Python
-    au!
-    au FileType python set cc=80
-    au FileType python nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
-augroup END
+" ========== Python ==========
+au FileType python set cc=80
+au FileType python nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" ========== END Python ==========
 
-augroup C
-    au!
-    au FileType c set tabstop=2
-    au FileType c set softtabstop=2
-    au FileType c set shiftwidth=2
-    au FileType c set listchars=tab:\ \ ,trail:·
-    au FileType c nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
-augroup END
+
+" ========== C ==========
+" cscope
+function UpdateCscopeDB()
+  if has("cscope") && filereadable(".cscope.out")
+    :silent !find . -iname '*.c' -o -iname '*.h' > .cscope.files
+    :silent !cscope -b -i .cscope.files -f .cscope.out
+    :silent :cs reset<CR>:cs add .cscope.out<CR>
+    redraw!
+  endif
+endfunction
+
+let g:cscope_db_added = 0
+function SetupCscope()
+  if has("cscope")
+    set csto=1
+    set cscopetag
+    set nocsverb
+    " add any database in current directory
+    if !g:cscope_db_added && filereadable(".cscope.out")
+      let g:cscope_db_added = 1
+      cs add .cscope.out
+    endif
+    set csverb
+  endif
+endfunction
+
+au BufNewFile,BufRead *.c,*.h call SetupCscope()
+au BufNewFile,BufWrite *.c,*.h call UpdateCscopeDB()
+nmap <leader><leader>s :call UpdateCscopeDB()<CR>
+au FileType c nnoremap <leader>d :cs find g <C-R>=expand("<cword>")<CR><CR>
+" end cscope
+
+au FileType c set tabstop=2
+au FileType c set softtabstop=2
+au FileType c set shiftwidth=2
+au FileType c set listchars=tab:\ \ ,trail:·
+" au FileType c nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" ========== END C ==========
 
 augroup IndentFixes
     au!
@@ -304,18 +334,17 @@ augroup IndentFixes
     au FileType css,less,html,jinja,javascript,php,puppet,yaml set softtabstop=2
 augroup END
 
-augroup Golang
-    au!
-    au FileType go set nolist
+" ========== Golang ==========
+au FileType go set nolist
 
-    au FileType go nmap <leader>gr <Plug>(go-run)
-    au FileType go nmap <leader>gb <Plug>(go-build)
-    au FileType go nmap <leader>gd <Plug>(go-doc)
-    " au FileType go nmap <leader>t <Plug>(go-test)
-    " au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <leader>gr <Plug>(go-run)
+au FileType go nmap <leader>gb <Plug>(go-build)
+au FileType go nmap <leader>gd <Plug>(go-doc)
+" au FileType go nmap <leader>t <Plug>(go-test)
+" au FileType go nmap <leader>c <Plug>(go-coverage)
 
-    au FileType go nmap <Leader>d <Plug>(go-def)
-    " au FileType go nmap <Leader>ds <Plug>(go-def-split)
-    " au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-    " au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-augroup END
+au FileType go nmap <Leader>d <Plug>(go-def)
+" au FileType go nmap <Leader>ds <Plug>(go-def-split)
+" au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+" au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+" ========== End Golang ==========
